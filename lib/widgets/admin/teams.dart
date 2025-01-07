@@ -22,10 +22,10 @@ class _Teams extends State<Teams> {
   @override
   void initState() {
     super.initState();
-    _loadItems();
+    _fetchTeams();
   }
 
-  void _loadItems() async {
+  Future<void> _fetchTeams() async {
     final url = Uri.parse(getTeamsUrl);
     try {
       final response = await http.get(url);
@@ -40,10 +40,12 @@ class _Teams extends State<Teams> {
       setState(() {
         _teams = _loadedItems;
         _isLoading = false;
+        _teams.sort((a, b) => b.dateStart.compareTo(a.dateStart));
       });
     } catch (error) {
       setState(() {
         _isLoading = false;
+        
       });
     }
   }
@@ -57,7 +59,7 @@ class _Teams extends State<Teams> {
     }
 
     setState(() {
-      _teams.add(newItem);
+      _teams.add(AddTeams.fromJson(newItem));
     });
   }
 
