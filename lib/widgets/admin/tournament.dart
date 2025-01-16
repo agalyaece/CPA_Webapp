@@ -63,7 +63,7 @@ class _Tournament extends State<Tournament> {
 
     setState(() {
       _tournament.add(AddTournament.fromJson(newItem));
-      // _tournament.sort((a, b) => b.tournamentStart.compareTo(a.tournamentStart));
+      
     });
   }
 

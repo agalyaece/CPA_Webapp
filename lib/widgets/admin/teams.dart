@@ -17,7 +17,7 @@ class Teams extends StatefulWidget {
 class _Teams extends State<Teams> {
   List<AddTeams> _teams = [];
 
-  var _isLoading = true;
+  bool _isLoading = true;
 
   @override
   void initState() {
